@@ -1,4 +1,4 @@
-(use srfi-37)
+(use srfi-37); option args-fold
 
 (define help
   (option
@@ -23,17 +23,18 @@
       (cons (cons 'user x) vals))))
 
 (define config
-  (reverse (args-fold
-    (command-line-arguments)
-    (list help port user)
-    (lambda (o n x vals)
-      (error "unrecognized option" n) )
-    cons
-    '() )))
+    (reverse 
+      (args-fold
+        (command-line-arguments) ; selct help as default here
+        (list help port user)
+        (lambda (o n x vals)
+          (error "unrecognized option" n) )
+        cons
+        '() )))
 
 ; TODOs
-; clean out DUP in config var (hash2set?)
 ; logger-lib
 ; defaulting to 'help
 ;
-(print* config)
+; (print config)
+;i (print (alist-ref 'port config))

@@ -1,0 +1,2 @@
+(require 'argsparse )
+(print config)
