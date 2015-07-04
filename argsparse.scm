@@ -22,19 +22,17 @@
     (lambda (o n x vals)
       (cons (cons 'user x) vals))))
 
+
 (define config
+  (let* ([cli/a (command-line-arguments)]
+         [cli/a_ (if 
+                   (null? cli/a)
+                   (list "-h") cli/a)])
     (reverse 
       (args-fold
-        (command-line-arguments) ; selct help as default here
+        cli/a_
         (list help port user)
         (lambda (o n x vals)
           (error "unrecognized option" n) )
         cons
-        '() )))
-
-; TODOs
-; logger-lib
-; defaulting to 'help
-;
-; (print config)
-;i (print (alist-ref 'port config))
+        '() ))))
