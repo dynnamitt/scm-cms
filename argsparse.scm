@@ -14,7 +14,7 @@
   (option
     '(#\p "port") #t #f
     (lambda (o n x vals)
-      (cons `(port ,(string->number x)) vals))))
+      (cons (cons 'port (string->number x)) vals))))
 
 (define user
   (option
@@ -26,8 +26,8 @@
 (define config
   (let* ([cli/a (command-line-arguments)]
          [cli/a_ (if 
-                   (null? cli/a)
-                   (list "-h") cli/a)])
+                   (null? cli/a) (list "-h")
+                   cli/a)])
     (reverse 
       (args-fold
         cli/a_
