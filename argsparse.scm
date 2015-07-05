@@ -24,13 +24,12 @@
 
 
 (define config
-  (let* ([cli/a (command-line-arguments)]
-         [cli/a_ (if 
-                   (null? cli/a)
-                   (list "-h") cli/a)])
+  (let* ([cli/a
+           (cond (null? (command-line-arguments)) "-h"
+                 (command-line-arguments))] )
     (reverse 
       (args-fold
-        cli/a_
+        cli/a
         (list help port user)
         (lambda (o n x vals)
           (error "unrecognized option" n) )
