@@ -1,7 +1,7 @@
 #! /usr/bin/csi -script
-(require 'argsparse )
-(use spiffy)
-(use intarweb)
+(require 'argsparse ) ;;config
+(use spiffy) ;; server-port , current-request , send-status , vhost-map , start-server 
+(use intarweb) ;; request-uri
 
 
 (server-port (cdr (assoc 'port config)))
@@ -12,11 +12,10 @@
 
 (print "starting on port: " (server-port))
 
-(define (main/hnd config)
+(define (main/hnd conf)
   (lambda (continue)
      (print (request-uri (current-request)))
-     (send-status 'ok config)))
+     (send-status 'ok conf)))
 
-(vhost-map `( 
-              (".*" . ,(main/hnd "accepted"))))
+(vhost-map `( (".*" . ,(main/hnd "accepted"))))
 (start-server)

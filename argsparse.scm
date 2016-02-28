@@ -25,7 +25,8 @@
     (lambda (o n x vals)
       (cons (cons 'user x) vals))))
 
-
+;; TODO only export this one,
+;;   embed above funcs inside here
 (define config
   (let* ([cli/a (command-line-arguments)]
          [cli/a_ (if 
