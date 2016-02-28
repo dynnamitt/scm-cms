@@ -1,5 +1,5 @@
-BIN=./start.scm
-CURL=curl
+BIN = ./start.scm
+CURL = curl
 
 check: $(BIN)
 	$(BIN) -p 5555 & \
