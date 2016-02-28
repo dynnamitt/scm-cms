@@ -1,3 +1,4 @@
+#! /usr/bin/csi -script
 (require 'argsparse )
 (use spiffy)
 

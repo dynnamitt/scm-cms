@@ -1,4 +1,7 @@
-(use srfi-37); option args-fold
+(use srfi-37)
+;; procs overview here
+;;    http://srfi.schemers.org/srfi-37/srfi-37.html
+
 
 (define help
   (option
