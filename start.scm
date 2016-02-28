@@ -3,7 +3,6 @@
 (use spiffy) ;; server-port , current-request , send-status , vhost-map , start-server 
 (use intarweb) ;; request-uri
 
-
 (server-port (cdr (assoc 'port config)))
 
 ;; When dropping privileges, switch to this user

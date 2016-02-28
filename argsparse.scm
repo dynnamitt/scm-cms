@@ -2,7 +2,6 @@
 ;; procs overview here
 ;;    http://srfi.schemers.org/srfi-37/srfi-37.html
 
-
 (define help
   (option
     '(#\h "help") #f #f
@@ -28,13 +27,14 @@
 ;; TODO only export this one,
 ;;   embed above funcs inside here
 (define config
-  (let* ([cli/a (command-line-arguments)]
-         [cli/a_ (if 
-                   (null? cli/a) (list "-h")
-                   cli/a)])
+  (let* ([c-args (command-line-arguments)]
+        [cli/a (if 
+                 (null? c-args)
+                 '("-h")
+                 c-args)])
     (reverse 
       (args-fold
-        cli/a_
+        cli/a
         (list help port user)
         (lambda (o n x vals)
           (error "unrecognized option" n) )
